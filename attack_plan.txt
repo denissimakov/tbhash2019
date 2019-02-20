@@ -1,0 +1,16 @@
+1) Everybody is reading instructions - 10-15 min
+2) Discussion of the task, tackle simple problem, make sure we understand instructions. 
+   Decide on "internal" format for problem data (input) and solution data (output).
+3) Split to work:
+   a) read: input file -> memory
+   b) write: solution (partial) -> output file
+   c) validation, scoring of (partial) solution
+   d) fast-and-dirty implementation of solution (input data -> solution)
+   e) try to submit simple solution, check scoring
+4) Discussion:
+   a) analyze input examples (may have different tactics for different inputs)
+   b) promissing strategies
+   c) decide what to focus on
+5) Implementation. 
+   Submit improved solutions to all problems.
+6) Brainstorm how to improve even further, and so on.
