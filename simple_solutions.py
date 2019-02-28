@@ -9,7 +9,7 @@ def dumb_solution(images):
     slides = slides_horiz + slides_vert
     return slides
 
-def greedy_solution(images, callback=None, callback_score_increment=1000):
+def greedy_solution(images, callback=None, callback_score_increment=1000, thresh=0):
     slides = [Slide((im,)) for im in images]
     solution = [slides.pop(0)]
     aaa = 0;
@@ -30,7 +30,7 @@ def greedy_solution(images, callback=None, callback_score_increment=1000):
                 ind_best = idx
                 side = 'r'
                 max_score = sr
-                if max_score > 0:
+                if max_score > min(thresh,pos_right):
                     break
             sl = calc_score([s, solution[0]])
             if  sl > max_score:
@@ -38,7 +38,7 @@ def greedy_solution(images, callback=None, callback_score_increment=1000):
                 side = 'l'               
                 ind_best = idx
                 max_score = sl
-                if max_score > 0:
+                if max_score > min(thresh,pos_left):
                     break
              
         if best is None:
