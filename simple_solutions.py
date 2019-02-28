@@ -1,6 +1,6 @@
 from hash_classes import *
 
-def dump_solutions(images):
+def dumb_solutions(images):
     horiz_images = [im for im in images if im.orientation=='H']
     vert_images = [im for im in images if im.orientation=='V']
     slides_horiz = [Slide((im,)) for im in horiz_images]
