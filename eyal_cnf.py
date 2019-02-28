@@ -3,8 +3,8 @@ from hash_classes import *
 import os
 import submission
 import simple_solutions
-
-submission.run_on_all(simple_solutions.dumb_solution)
+import eyal_solutions
+submission.run_on_all(eyal_solutions.greedy_solution, all_horizontal=True)
 # f = 'b_lovely_landscapes.txt'
 # f = 'c_memorable_moments.txt'
 #
