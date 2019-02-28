@@ -27,21 +27,12 @@ class Input_parser(object):
             # print(len(only_vertical))
             img = only_vertical.pop()
             max_M = 0
-<<<<<<< HEAD
             max_j = -1
             #for j, pair_img in enumerate(only_vertical):
             #    union_set = pair_img.tags | img.tags
             #    if len(union_set) > max_M:
             #        max_M = len(union_set)
             #        max_j = j
-=======
-            max_j = 0
-            # for j, pair_img in enumerate(only_vertical):
-            #     union_set = pair_img.tags | img.tags
-            #     if len(union_set) > max_M:
-            #         max_M = len(union_set)
-            #         max_j = j
->>>>>>> 591118d10a4c487bbfb9fcccff2ddbd6cfb923a7
             pair = only_vertical.pop(max_j)
             new_img = Image(id=(img.id,pair.id), orientation='H', tags = pair.tags | img.tags)
             only_horizontal.append(new_img)
