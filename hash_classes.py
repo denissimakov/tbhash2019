@@ -1,10 +1,15 @@
 
 class Image(object):
-    def __init__(self, id, orientation, tags, M):
+    def __init__(self, id, orientation, tags):
         self.id = id
+        # image orientation
         self.orientation = orientation
+        # images tags
         self.tags = tags
-        self.M = M
+        # length of tags
+        self.M = len(tags)
 
-class Slides(object):
-    pass
+class Slide(object):
+    def __init__(self, images):
+        self.images = images
+        self.M = len(images)
