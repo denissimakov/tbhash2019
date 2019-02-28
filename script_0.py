@@ -11,7 +11,6 @@ print(len(slides), 'slides')
 print('score=', score(slides))
 #list(all_pair_scores(slides))
 
-writer = Output_writer()
 writer = Output_writer(slides)
 writer.write_result_file('a_dumb.txt')
 
