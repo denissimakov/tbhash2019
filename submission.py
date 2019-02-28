@@ -28,7 +28,7 @@ def run_on_all(solution_func, all_horizontal=False):
     print(5*'=')
     print('Total score:', sum(scores))
 
-def run_on_one(input_file, solution_func, all_horizontal=False):
+def run_on_one(input_file, solution_func, all_horizontal=False, solution_func_kwargs={}):
     print(5*'-')
     print(input_file)
     if all_horizontal:
@@ -37,7 +37,7 @@ def run_on_one(input_file, solution_func, all_horizontal=False):
         images = Input_parser(input_file).images
 
     print(len(images), 'images')
-    slides = solution_func(images)
+    slides = solution_func(images, **solution_func_kwargs)
     print(len(slides), 'slides')
     score_ = calc_score(slides)
     print('score=', score_)

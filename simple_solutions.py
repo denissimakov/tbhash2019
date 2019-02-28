@@ -1,4 +1,5 @@
 from hash_classes import *
+from scoring import calc_score
 
 def dumb_solution(images):
     horiz_images = [im for im in images if im.orientation=='H']
@@ -8,10 +9,11 @@ def dumb_solution(images):
     slides = slides_horiz + slides_vert
     return slides
 
-def greedy_solution(images):
+def greedy_solution(images, callback=None, callback_score_increment=1000):
     slides = [Slide((im,)) for im in images]
     solution = [slides.pop(0)]
     aaa = 0;
+    last_callback_score = aaa
     while len(slides) > 0:
         max_score = 0
         best = None
@@ -22,7 +24,7 @@ def greedy_solution(images):
         for idx, s in enumerate(slides):
             
             
-            sr = score( [solution[-1],s])
+            sr = calc_score( [solution[-1],s])
             if sr > max_score:
                 best = s
                 ind_best = idx
@@ -30,7 +32,7 @@ def greedy_solution(images):
                 max_score = sr
                 if max_score > 0:
                     break
-            sl = score([s, solution[0]])
+            sl = calc_score([s, solution[0]])
             if  sl > max_score:
                 best = s
                 side = 'l'               
@@ -49,4 +51,8 @@ def greedy_solution(images):
             slides.pop(ind_best)
         aaa += max_score    
         print(len(slides),' ',aaa)
+        if callback is not None and aaa > last_callback_score + callback_score_increment:
+            last_callback_score = aaa
+            callback(solution)
+
     return solution
