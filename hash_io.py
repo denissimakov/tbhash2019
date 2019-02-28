@@ -8,6 +8,7 @@ class Input_parser(object):
         self.header = self.all_lines.pop(0)
         self.n_lines = len(self.all_lines)  # excluding header
         self.N = int(self.header)
+        self.create_image_list()
     def create_image_list(self):
         self.images = []
         for i,l in enumerate(self.all_lines):
@@ -24,7 +25,7 @@ class Output_writer(object):
 if __name__ == '__main__':
     # example
     tmp = Input_parser('input/a_example.txt')
-    tmp.create_image_list()
+    # tmp.create_image_list()
     for im in tmp.images:
         print(im.id,im.orientation,im.M,im.tags)
     # print('Header:')
