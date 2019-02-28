@@ -14,6 +14,7 @@ class Slide(object):
         self.images = images
         self.M = len(images)
         if len(images) > 1:
+            self.tags = images[0].tags or images[1].tags
             if images[0].orientation != images[1].orientation:
                 raise ValueError('Not Valid Slide')
             else:
