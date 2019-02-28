@@ -1,8 +1,8 @@
 input_paths = ['input/a_example.txt',
-              'input/b_lovely_landscapes.txt',
-              'input/c_memorable_moments.txt',
-              'input/d_pet_pictures.txt',
-                'input/e_shiny_selfies.txt']
+              # 'input/b_lovely_landscapes.txt',
+              # 'input/c_memorable_moments.txt',
+              'input/d_pet_pictures.txt']
+                # 'input/e_shiny_selfies.txt']
 
 from scoring import *
 from simple_solutions import *
