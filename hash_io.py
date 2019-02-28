@@ -19,8 +19,22 @@ class Input_parser(object):
 
 class Output_writer(object):
     """ gets list of slides and writes txt file"""
-    def __init__(self, slides, path):
-        pass
+    def __init__(self, slides):
+        self.slides = slides
+
+    def write_result_file(self, path):
+        img_id_list = []
+        for slide in self.slides:
+            img_id_list.append([str(img.id) for img in slide.images])
+        S = len(img_id_list)
+        with open(path,'w') as f:
+            f.write(str(S))
+            f.write('\n')
+            for slide in img_id_list:
+                f.write(' '.join(slide)+'\n')
+
+
+
 
 
 if __name__ == '__main__':
