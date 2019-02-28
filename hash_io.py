@@ -1,3 +1,5 @@
+from hash_classes import Image
+
 class Input_parser(object):
     """ Reads file from path, creates header string and a list of all lines in file (excluding header)"""
     def __init__(self, path):
@@ -8,9 +10,9 @@ class Input_parser(object):
         self.N = int(self.header)
     def create_image_list(self):
         self.images = []
-        for l in self.all_lines:
+        for i,l in enumerate(self.all_lines):
             line = l.split()
-            self.images.append(Image(id=line[0], orientation=line[1], M=line[2], tags=set(line[3:])))
+            self.images.append(Image(id=i, orientation=line[0], M=line[1], tags=set(line[2:])))
 
 class Output_writer(object):
 
@@ -19,10 +21,13 @@ class Output_writer(object):
 
 
 if __name__ == '__main__':
+    # example
     tmp = Input_parser('input/a_example.txt')
-    print('Header:')
-    print(tmp.header)
-    print('All lines:')
-    for l in tmp.all_lines:
-        print(l)
-
+    tmp.create_image_list()
+    for im in tmp.images:
+        print(im.id,im.orientation,im.M,im.tags)
+    # print('Header:')
+    # print(tmp.header)
+    # print('All lines:')
+    # for l in tmp.all_lines:
+    #     print(l)
