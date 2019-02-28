@@ -54,7 +54,7 @@ class Output_writer(object):
             img_id_list.append([str(img.id) for img in slide.images])
 
         flat_list = [item for sublist in img_id_list for item in sublist]
-        assert len(flat_list) > len(set(flat_list)), 'IDs are not all unique!'
+        assert len(flat_list) == len(set(flat_list)), 'IDs are not all unique!'
 
         S = len(img_id_list)
         with open(path,'w') as f:

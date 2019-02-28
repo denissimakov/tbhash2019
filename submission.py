@@ -28,10 +28,14 @@ def run_on_all(solution_func):
     print(5*'=')
     print('Total score:', sum(scores))
 
-def run_on_one(input_file, solution_func):
+def run_on_one(input_file, solution_func, all_horizontal=False):
     print(5*'-')
     print(input_file)
-    images = Input_parser(input_file).images
+    if all_horizontal:
+        images = Input_parser(input_file).all_horizontal_list()
+    else:
+        images = Input_parser(input_file).images
+
     print(len(images), 'images')
     slides = solution_func(images)
     print(len(slides), 'slides')
