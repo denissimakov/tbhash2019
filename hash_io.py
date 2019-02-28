@@ -9,6 +9,7 @@ class Input_parser(object):
         self.n_lines = len(self.all_lines)  # excluding header
         self.N = int(self.header)
         self.create_image_list()
+
     def create_image_list(self):
         self.images = []
         for i,l in enumerate(self.all_lines):
@@ -17,8 +18,8 @@ class Input_parser(object):
         return self
 
 class Output_writer(object):
-
-    def __init__(self, path):
+    """ gets list of slides and writes txt file"""
+    def __init__(self, slides, path):
         pass
 
 
