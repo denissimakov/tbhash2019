@@ -4,7 +4,7 @@ class Input_parser(object):
         self.f = open(path, 'r')
         self.all_lines = self.f.readlines()
         self.header = self.all_lines.pop(0)
-
+        self.n_lines = len(self.all_lines)  # excluding header
 
 class Output_writer(object):
 
@@ -13,9 +13,10 @@ class Output_writer(object):
 
 
 if __name__ == '__main__':
-    tmp = Input_parser('2019_practice/b_small.in')
+    tmp = Input_parser('2019_practice/d_big.in')
     print('Header:')
     print(tmp.header)
     print('All lines:')
     for l in tmp.all_lines:
         print(l)
+
