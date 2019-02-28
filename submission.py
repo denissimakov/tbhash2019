@@ -28,7 +28,8 @@ def run_on_one(input_file, solution_func):
     print('score=', score_)
     writer = Output_writer(slides)
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S_%f")
-    output_file = timestamp + '_' + os.path.basename(input_file)
+    name, ext = os.path.splitext(os.path.basename(input_file))
+    output_file = timestamp + '-' + name + '-score{}'.format(score_) + ext
     writer.write_result_file(output_file)
     print(output_file)
     return score_
