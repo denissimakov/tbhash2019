@@ -1,5 +1,5 @@
 class Input_parser(object):
-
+    """ Reads file from path, creates header string and a list of all lines in file (excluding header)"""
     def __init__(self, path):
         self.f = open(path, 'r')
         self.all_lines = self.f.readlines()
