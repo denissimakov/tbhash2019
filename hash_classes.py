@@ -7,3 +7,4 @@ class Image(object):
         self.M = M
 
 class Slides(object):
+    pass
