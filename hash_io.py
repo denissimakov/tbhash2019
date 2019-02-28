@@ -53,7 +53,7 @@ class Output_writer(object):
         for slide in self.slides:
             if len(slide.images) == 1 and isinstance(slide.images[0].id,tuple):
                 # vertical pairing mode
-                ids = [slide.images[0].id[0], slide.images[0].id[0]]
+                ids = [str(slide.images[0].id[0]), str(slide.images[0].id[1])]
                 img_id_list.append(ids)
             else:
 
