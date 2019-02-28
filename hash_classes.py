@@ -13,3 +13,10 @@ class Slide(object):
     def __init__(self, images):
         self.images = images
         self.M = len(images)
+        if len(images) > 1:
+            if images[0].orientation != images[1].orientation:
+                raise ValueError('Not Valid Slide')
+            else:
+                self.valid = 1
+        else:
+            self.valid = 1
