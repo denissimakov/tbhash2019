@@ -12,6 +12,10 @@ class Output_writer(object):
         pass
 
 
-# if __name__ == '__main__':
-#     tmp = Input_parser('/2019_practice/a_example.in')
-
+if __name__ == '__main__':
+    tmp = Input_parser('2019_practice/b_small.in')
+    print('Header:')
+    print(tmp.header)
+    print('All lines:')
+    for l in tmp.all_lines:
+        print(l)
