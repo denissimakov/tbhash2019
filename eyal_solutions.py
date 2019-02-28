@@ -13,24 +13,16 @@ def greedy_solution(images):
         img_last = result[-1]
         img_first = result[0]
         max_s = 0
-        best_first = 0
-        best_last = 0
-        best_first_i = -1
-        best_last_i = -1
+        # best_first = 0
+        # best_last = 0
+        # best_first_i = -1
+        # best_last_i = -1
         max_i = -1
         last = True
         for i, pair in enumerate(images[:1000]):
             score_first = calc_pair_score(img_first, pair)
-            if score_first >= best_first:
-                best_first = score_first
-                best_first_i = i
-
             score_last = calc_pair_score(img_last, pair)
-            if score_last >= best_last:
-                best_last = score_last
-                best_last_i = i
-
-            score_last = calc_pair_score(img_last, pair)
+            
             if score_first>= score_last and score_first>max_s:
                 last = False
                 max_s = score_first
