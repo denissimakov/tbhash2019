@@ -1,18 +1,23 @@
 #input_path = 'input/a_example.txt'
-input_path = 'input/e_shiny_selfies.txt'
+input_path = 'input/b_lovely_landscapes.txt'
 
 from scoring import *
-from simple_solutions import *
 from hash_io import *
-images = Input_parser(input_path).images
-slides = dumb_solution(images)
-print(len(images), 'images')
-print(len(slides), 'slides')
-print('score=', score(slides))
-#list(all_pair_scores(slides))
 
-writer = Output_writer()
-writer = Output_writer(slides)
-writer.write_result_file('a_dumb.txt')
+images = Input_parser(input_path).images
+print(input_path)
+print(len(images), 'images')
+
+slides = dumb_solution(images)
+print(len(slides), 'slides')
+
+print('dumb score=', score(slides))
+
+def find_best_pair(slide_chains):
+    """slide_chains: list of lists of chains"""
+    
+
+#writer = Output_writer(slides)
+#writer.write_result_file('a_dumb.txt')
 
 

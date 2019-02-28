@@ -18,6 +18,30 @@ class Input_parser(object):
             self.images.append(Image(id=i, orientation=line[0], tags=set(line[2:])))
         return self
 
+    def all_horizontal_list(self):
+        only_vertical = [img for img in self.images if img.orientation == 'V']
+        only_vertical.sort(key=lambda x: x.M)
+        only_horizontal = [img for img in self.images if img.orientation == 'H']
+
+        while len(only_vertical)>=2:
+            img = only_vertical.pop()
+            max_M = 0
+            max_j = -1
+            for j, pair_img in enumerate(only_vertical):
+                union_set = pair_img.tags | img.tags
+                if len(union_set) > max_M:
+                    max_M = len(union_set)
+                    max_j = j
+            pair = only_vertical.pop(max_j)
+            new_img = Image(id=(img.id,pair.id), orientation='H', tags = pair.tags | img.tags)
+            only_horizontal.append(new_img)
+
+        only_horizontal.sort(key=lambda x: x.M, reverse=True)
+
+        # #test:
+        # uniques =
+        return only_horizontal
+
 class Output_writer(object):
     """ gets list of slides and writes txt file"""
     def __init__(self, slides):
@@ -28,6 +52,10 @@ class Output_writer(object):
         img_id_list = []
         for slide in self.slides:
             img_id_list.append([str(img.id) for img in slide.images])
+
+        flat_list = [item for sublist in img_id_list for item in sublist]
+        assert len(flat_list) == len(set(flat_list)), 'IDs are not all unique!'
+
         S = len(img_id_list)
         with open(path,'w') as f:
             f.write(str(S))
