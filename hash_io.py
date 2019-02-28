@@ -12,7 +12,8 @@ class Input_parser(object):
         self.images = []
         for i,l in enumerate(self.all_lines):
             line = l.split()
-            self.images.append(Image(id=i, orientation=line[0], M=line[1], tags=set(line[2:])))
+            self.images.append(Image(id=i, orientation=line[0], tags=set(line[2:])))
+        return self
 
 class Output_writer(object):
 
