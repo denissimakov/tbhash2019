@@ -22,8 +22,8 @@ def save_result(input_file, slides, score=None):
     print(output_file)
 
 
-def run_on_all(solution_func):
-    scores = [run_on_one(input_file=input_file, solution_func=solution_func) \
+def run_on_all(solution_func, all_horizontal=False):
+    scores = [run_on_one(input_file=input_file, solution_func=solution_func, all_horizontal=all_horizontal) \
                 for input_file in sorted(input_paths)]
     print(5*'=')
     print('Total score:', sum(scores))
