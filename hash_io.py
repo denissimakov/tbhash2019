@@ -24,14 +24,15 @@ class Input_parser(object):
         only_horizontal = [img for img in self.images if img.orientation == 'H']
 
         while len(only_vertical)>=2:
+            # print(len(only_vertical))
             img = only_vertical.pop()
             max_M = 0
             max_j = -1
-            for j, pair_img in enumerate(only_vertical):
-                union_set = pair_img.tags | img.tags
-                if len(union_set) > max_M:
-                    max_M = len(union_set)
-                    max_j = j
+            #for j, pair_img in enumerate(only_vertical):
+            #    union_set = pair_img.tags | img.tags
+            #    if len(union_set) > max_M:
+            #        max_M = len(union_set)
+            #        max_j = j
             pair = only_vertical.pop(max_j)
             new_img = Image(id=(img.id,pair.id), orientation='H', tags = pair.tags | img.tags)
             only_horizontal.append(new_img)
@@ -51,10 +52,16 @@ class Output_writer(object):
         path = os.path.join('results_files', path)
         img_id_list = []
         for slide in self.slides:
-            img_id_list.append([str(img.id) for img in slide.images])
+            if len(slide.images) == 1 and isinstance(slide.images[0].id,tuple):
+                # vertical pairing mode
+                ids = [str(slide.images[0].id[0]), str(slide.images[0].id[1])]
+                img_id_list.append(ids)
+            else:
+
+                img_id_list.append([str(img.id) for img in slide.images])
 
         flat_list = [item for sublist in img_id_list for item in sublist]
-        assert len(flat_list) > len(set(flat_list)), 'IDs are not all unique!'
+        assert len(flat_list) == len(set(flat_list)), 'IDs are not all unique!'
 
         S = len(img_id_list)
         with open(path,'w') as f:

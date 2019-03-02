@@ -1,8 +1,8 @@
 input_paths = ['input/a_example.txt',
-              'input/b_lovely_landscapes.txt',
-              'input/c_memorable_moments.txt',
-              'input/d_pet_pictures.txt',
-                'input/e_shiny_selfies.txt']
+              # 'input/b_lovely_landscapes.txt',
+              # 'input/c_memorable_moments.txt',
+              'input/d_pet_pictures.txt']
+                # 'input/e_shiny_selfies.txt']
 
 from scoring import *
 from simple_solutions import *
@@ -22,18 +22,22 @@ def save_result(input_file, slides, score=None):
     print(output_file)
 
 
-def run_on_all(solution_func):
-    scores = [run_on_one(input_file=input_file, solution_func=solution_func) \
+def run_on_all(solution_func, all_horizontal=False):
+    scores = [run_on_one(input_file=input_file, solution_func=solution_func, all_horizontal=all_horizontal) \
                 for input_file in sorted(input_paths)]
     print(5*'=')
     print('Total score:', sum(scores))
 
-def run_on_one(input_file, solution_func):
+def run_on_one(input_file, solution_func, all_horizontal=False, solution_func_kwargs={}):
     print(5*'-')
     print(input_file)
-    images = Input_parser(input_file).images
+    if all_horizontal:
+        images = Input_parser(input_file).all_horizontal_list()
+    else:
+        images = Input_parser(input_file).images
+
     print(len(images), 'images')
-    slides = solution_func(images)
+    slides = solution_func(images, **solution_func_kwargs)
     print(len(slides), 'slides')
     score_ = calc_score(slides)
     print('score=', score_)
